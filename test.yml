@@ -1,0 +1,19 @@
+---
+  - name: cisco test
+    hosts: routers
+    gather_facts: no
+    connection: network_cli
+
+    vars:
+      user: james
+
+    tasks:
+      - name: get sho run output
+        ios_command:
+          commands: show run
+        register: config_file
+
+      - debug: var=config_file
+
+      
+          
